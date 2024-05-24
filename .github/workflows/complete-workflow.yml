@@ -17,7 +17,7 @@ jobs:
       run:  mvn -B verify sonar:sonar -Dsonar.projectKey=javaprojectreachability -Dsonar.organization=javaprojectreachability -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
   security:
     runs-on: ubuntu-latest
     needs: build
@@ -28,7 +28,7 @@ jobs:
         uses: snyk/actions/maven@master
         continue-on-error: true
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.TOKEN_SNYK }}
   zap_scan:
     runs-on: ubuntu-latest
     needs: security
