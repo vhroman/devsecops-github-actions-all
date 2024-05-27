@@ -1,6 +1,10 @@
 name: Build code, run unit test, run SAST, SCA, DAST security scans
-on: push
-#
+on:
+  push:
+    branches:
+      - prueba
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
